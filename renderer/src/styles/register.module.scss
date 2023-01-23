@@ -1,0 +1,11 @@
+@import "./custom.scss";
+
+.bgContent {
+    background-image: radial-gradient(circle, #5c0067 0%, $primary-color 100%);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 5px;
+    overflow-y: auto;
+}

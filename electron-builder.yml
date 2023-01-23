@@ -1,0 +1,12 @@
+appId: com.bmsstocks.app
+productName: BMSSTOCKS
+copyright: Copyright © 2023 DoubleFn
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null

@@ -1,0 +1,25 @@
+@import "./color.scss";
+
+
+.bgPrimary {
+    background-color: $primary-color !important;
+}
+
+.bold600 {
+    font-weight: 600;
+}
+.bold700 {  
+    font-weight: 700;
+}
+
+.borderRadius {
+    border-radius: 12px;
+}
+
+.h100 {
+    height: 100vh !important;
+}
+
+.cursorP {
+    cursor: pointer;
+}
