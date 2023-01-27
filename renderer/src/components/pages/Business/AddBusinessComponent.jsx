@@ -6,6 +6,7 @@ import ReactLoading from 'react-loading';
 import { FaSave, FaTimesCircle } from 'react-icons/fa';
 import styles from "../../../styles/dashbaord.module.scss";
 import Utils from '../../../utils/Utils';
+import ApiCalls from '../../../utils/apiCalls';
 
 function AddBusinessComponent({ getBusiness, showModal = false, setShowModalBusiness }) {
 
@@ -28,12 +29,11 @@ function AddBusinessComponent({ getBusiness, showModal = false, setShowModalBusi
         var body = datas;
 
         ApiCalls.user_request(body, "business/add").then((response) => {
-            if (response.data.status) {
+            if (response.data.status == true) {
                 // e.reset()
                 getBusiness()
                 setLoader(true)
                 setShowModalBusiness(false)
-                setUserBusiness(response.data.data)
                 Utils.showAlertToast("Creation Completed")
             } else {
                 Utils.showAlertToast(response.data.message, "warning", 5000)
@@ -62,7 +62,7 @@ function AddBusinessComponent({ getBusiness, showModal = false, setShowModalBusi
                             <div className={`col-md-12`}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Business Name <span className='text-danger'>*</span></Form.Label>
-                                    <Form.Control type="email" required placeholder="Enter Name" />
+                                    <Form.Control type="text" required placeholder="Enter Name" />
                                     <Form.Text className="text-muted">
                                         {/* We'll never share your email with anyone else. */}
                                     </Form.Text>
@@ -86,7 +86,7 @@ function AddBusinessComponent({ getBusiness, showModal = false, setShowModalBusi
                             <Button disabled={loader} size='md' type='submit' variant="primary">
                                 {
                                     (loader) ? (
-                                        <ReactLoading type={"bars"} className={`mx-auto`} color={"#fff"} width={"5%"} height={'20px'} />
+                                        <> <ReactLoading type={"bars"} className={`mx-auto `} color={"#fff"} width={"30px"} height={'25px'} /></>
                                     ) : (
                                         <>Save Business &nbsp;<FaSave className={`${styles.pullRight} mt-1`}></FaSave></>
                                     )
