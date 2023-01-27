@@ -5,6 +5,10 @@
     background-color: $primary-color !important;
 }
 
+.textPrimary {
+    color: $primary-color !important;
+}
+
 .bold600 {
     font-weight: 600;
 }
@@ -22,4 +26,13 @@
 
 .cursorP {
     cursor: pointer;
+}
+
+.pullRight {
+    float: right;
+}
+
+.hrColor {
+    background: #ddd;
+    border: 0.3px solid #ddd;
 }

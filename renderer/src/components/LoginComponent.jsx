@@ -81,10 +81,12 @@ function LoginComponent() {
                                 <Form.Check type="checkbox" label="Remember Me" />
                             </Form.Group>
                             <Button disabled={loader} variant="primary" type="submit" className={`${styles.bgPrimary} w-100`}>
-                                Submit <FaHandPointRight></FaHandPointRight>
+
                                 {
-                                    (loader) && (
+                                    (loader) ? (
                                         <ReactLoading type={"bars"} className={`mx-auto`} color={"#fff"} width={"5%"} height={'20px'} />
+                                    ) : (
+                                        <>Submit <FaHandPointRight></FaHandPointRight></>
                                     )
                                 }
                             </Button>
