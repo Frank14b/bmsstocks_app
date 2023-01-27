@@ -1,0 +1,18 @@
+@import "./custom.scss";
+
+.loadingDiv {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    background-image: radial-gradient(circle, #5c0067 0%, $primary-color 100%);
+}
+
+.loadingElement {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

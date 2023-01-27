@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react';
 import Utils from '../src/utils/Utils';
 import { AppWrapper } from '../src/contexts/GlobalContext';
+import LoadingComponent from '../src/layouts/LoadingComponent';
 
 function Home() {
 
@@ -33,7 +34,7 @@ function Home() {
           </AppWrapper>
         ) : (
           <>
-
+            <LoadingComponent></LoadingComponent>
           </>
         )
       }

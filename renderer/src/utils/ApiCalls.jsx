@@ -1,27 +1,34 @@
+import axios from "axios";
 import Utils from "./Utils";
 
 const ApiCalls = {
-    user_request: (body, url, method = "POST") => {
-        return axios({
-            method: method,
-            url: `http://localhost:8765/api/${url}`,
+    user_request: async (body, url, method = "POST") => {
+
+        return await axios({
+            method: "POST",
+            mode: 'no-cors',
+            url: `${process.env.BMSUSERS_API_LINK + url}`,
             data: body,
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': Utils.getLocalStorage("token")
-            }
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': Utils.getLocalStorage("token"),
+                'Access-Control-Allow-Origin': '*'
+            },
+            withCredentials: true,
+            credentials: 'same-origin',
         })
     },
 
-    stock_request: (body, url, method = "POST") => {
-        return axios({
+    stock_request: async (body, url, method = "POST") => {
+        return await axios({
             method: method,
-            url: `http://localhost:8765/api/${url}`,
+            url: `${process.env.BMSUSERS_API_LINK + url}`,
             data: body,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': Utils.getLocalStorage("token")
-            }
+            },
+            withCredentials: true,
         })
     },
 }

@@ -9,12 +9,14 @@ import { useRouter } from 'next/router'
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 import { useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
 function RegisterComponent() {
 
     const router = useRouter()
     const [loader, setLoader] = useState(false)
-    // const net = electron.remote.net;
+    const { t } = useTranslation('common');
+    // router.locale
 
     const registerUser = (e) => {
         e.preventDefault();
@@ -31,20 +33,23 @@ function RegisterComponent() {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8765/api/users/signup',
+            url: process.env.BMSUSERS_API_LINK + 'users/signup',
             data: body,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then((response) => {
-            if(response.data.status) {
+            if(response.data.status == true) {
                 // e.reset()
                 setLoader(true)
+                Utils.showAlertToast("Account created! Please Login Now")
                 router.push("/login")
             }else{
+                Utils.showAlertToast("Unable to Register", "warning")
                 setLoader(false)
             }
         }).catch((err) => {
+            Utils.showAlertToast("An error occured! please retry later", "error")
             setLoader(false)
         })
     }

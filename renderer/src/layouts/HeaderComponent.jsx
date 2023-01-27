@@ -1,11 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import styles from "../styles/header.module.scss";
+import { FaBuilding, FaUserAlt } from 'react-icons/fa';
 
 function HeaderComponent() {
     return (
@@ -15,28 +13,14 @@ function HeaderComponent() {
             </Head>
             <div>
                 <Navbar expand="lg" className={`${styles.bgPrimary}`}>
-                    <Container fluid>
+                    <Container fluid className='px-4'>
                         <Navbar.Brand href="#home" className={`text-white ${styles.bold700}`}>BMS</Navbar.Brand>
                         {/* <Navbar.Toggle aria-controls="navbar-dark-example" /> */}
-                        {/* <Navbar.Collapse id="navbar-dark-example">
-                            <Nav>
-                                <NavDropdown
-                                    id="nav-dropdown-dark-example"
-                                    title="Dropdown"
-                                    menuVariant="dark"
-                                >
-                                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2">
-                                        Another action
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4">
-                                        Separated link
-                                    </NavDropdown.Item>
-                                </NavDropdown>
-                            </Nav>
-                        </Navbar.Collapse> */}
+                        <div className={``}>
+                            {/* <span className={`mx-3 ${styles.cursorP}`}><FaUserAlt className={`${styles.menuIcon}`}></FaUserAlt></span> */}
+                            <span className={`mx-3 ${styles.cursorP}`}><FaBuilding className={`${styles.menuIcon}`}></FaBuilding></span>
+                            <span className={`mx-3 ${styles.cursorP}`}><FaUserAlt className={`${styles.menuIcon}`}></FaUserAlt></span>
+                        </div>
                     </Container>
                 </Navbar>
             </div>

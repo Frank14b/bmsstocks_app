@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import styles from "../styles/login.module.scss";
-import {FaFacebook, FaGoogle, FaHandPointRight, FaUserAlt, FaUserLock } from 'react-icons/fa';
+import { FaFacebook, FaGoogle, FaHandPointRight, FaUserAlt, FaUserLock } from 'react-icons/fa';
 import { useRouter } from 'next/router'
 import axios from 'axios';
 import ReactLoading from 'react-loading';
@@ -15,13 +15,6 @@ function LoginComponent() {
 
     const router = useRouter()
     const [loader, setLoader] = useState(false)
-
-    useEffect(() => {
-        // 
-        if (Utils.getLocalStorage("token")) {
-            router.push("/login")
-        }
-      }, [])
 
     const loginUser = (e) => {
         e.preventDefault();
@@ -36,22 +29,25 @@ function LoginComponent() {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8765/api/users/signin',
+            url: process.env.BMSUSERS_API_LINK + 'users/signin',
             data: body,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then((response) => {
-            if(response.data.status) {
+            if (response.data.status == true) {
                 // e.reset()
                 setLoader(true)
                 Utils.saveLocalStorage("token", response.data.token)
                 Utils.saveLocalStorage("userData", JSON.stringify(response.data.data))
+                Utils.showAlertToast("Successfull Login")
                 router.push("/home")
-            }else{ 
+            } else {
+                Utils.showAlertToast(response.data.message, "warning", 5000)
                 setLoader(false)
             }
         }).catch((err) => {
+            Utils.showAlertToast("An error occured! please retry later", "error")
             setLoader(false)
         })
     }
@@ -88,7 +84,7 @@ function LoginComponent() {
                                 Submit <FaHandPointRight></FaHandPointRight>
                                 {
                                     (loader) && (
-                                        <ReactLoading type={"bars"} className={`mx-auto`} color={"#fff"} width={"5%"} height={'20px'}/>
+                                        <ReactLoading type={"bars"} className={`mx-auto`} color={"#fff"} width={"5%"} height={'20px'} />
                                     )
                                 }
                             </Button>
@@ -114,7 +110,7 @@ function LoginComponent() {
 
                     <div className={`my-4 text-center col-md-11 py-3 mx-auto`}>
                         <p className={`text-white`}>New User?
-                            <span onClick={(e) => {router.push("/register")}} className={`${styles.bold600} ${styles.cursorP}`}> Create An Account Here <FaHandPointRight></FaHandPointRight> </span></p>
+                            <span onClick={(e) => { router.push("/register") }} className={`${styles.bold600} ${styles.cursorP}`}> Create An Account Here <FaHandPointRight></FaHandPointRight> </span></p>
                     </div>
                 </div>
             </div>
