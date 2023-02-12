@@ -1,8 +1,16 @@
 @import "./custom.scss";
 
 .menuIcon {
-    border-radius: 50%;
+    border-radius: 25%;
     background: #ddd;
     padding: 4px;
     font-size: 25px;
+}
+
+.headerBlock {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 11;
 }

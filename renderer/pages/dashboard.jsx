@@ -1,15 +1,14 @@
 import React from 'react';
 import HeaderComponent from '../src/layouts/HeaderComponent';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HomeComponent from '../src/components/pages/HomeComponent';
+import DashboardComponent from '../src/components/pages/DashboardComponent';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 import Utils from '../src/utils/Utils';
 import LoadingComponent from '../src/layouts/LoadingComponent';
 
-
-function Home() {
+function Dashboard() {
 
   const router = useRouter()
   const [isConected, setIsConected] = useState(false)
@@ -30,7 +29,7 @@ function Home() {
         (isConected) ? (
           <>
             <HeaderComponent></HeaderComponent>
-            <HomeComponent></HomeComponent>
+            <DashboardComponent></DashboardComponent>
           </>
         ) : (
           <>
@@ -42,4 +41,4 @@ function Home() {
   );
 };
 
-export default Home;
+export default Dashboard;

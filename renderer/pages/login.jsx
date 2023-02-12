@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LoginComponent from '../src/components/LoginComponent';
+import LoginComponent from '../src/components/pages/LoginComponent';
 import { useRouter } from 'next/router';
 import LoadingComponent from '../src/layouts/LoadingComponent';
 import Utils from '../src/utils/Utils';

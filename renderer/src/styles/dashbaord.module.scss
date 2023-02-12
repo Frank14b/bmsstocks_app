@@ -1,2 +1,14 @@
 @import "./custom.scss";
 
+.navbarMenu {
+    position: fixed;
+    top: 89px;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 9999 !important;
+}
+
+.mainSection {
+    margin-left: 95px;
+}

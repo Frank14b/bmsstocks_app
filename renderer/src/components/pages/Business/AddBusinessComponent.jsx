@@ -91,7 +91,6 @@ function AddBusinessComponent({ getBusiness, showModal = false, setShowModalBusi
                                         <>Save Business &nbsp;<FaSave className={`${styles.pullRight} mt-1`}></FaSave></>
                                     )
                                 }
-
                             </Button>
                         </Modal.Footer>
                     </Form>

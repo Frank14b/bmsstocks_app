@@ -15,6 +15,10 @@ const Utils = {
         }
     },
 
+    clearLocalStorage: () => {
+        secureLocalStorage.clear()
+    },
+
     showAlertToast: (text = "Success", icon = "success", timer = 3000, position = "top-end") => {
         const Toast = Swal.mixin({
             toast: true,
@@ -32,6 +36,26 @@ const Utils = {
             icon: icon,
             title: text
         })
+    },
+
+    checkTokenValidity: () => {
+        let token = Utils.getLocalStorage("token")
+        if(token) {
+            let tmp_token = token.split(".")
+            if(tmp_token[1]) {
+                let exp_date = JSON.parse(atob(tmp_token[1])).exp*1000
+                let timer = new Date().getTime()
+                if(exp_date < timer) {
+                    return false
+                }else{
+                    return true
+                }
+            }else {
+                return false
+            }
+        }else {
+            return false
+        }
     }
 }
 

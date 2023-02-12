@@ -1,0 +1,11 @@
+@import "./color.scss";
+
+.list-group-item.active {
+    background: $primary-color !important;
+    border-color: $primary-color !important;
+}
+
+.bg-primary,
+.btn-primary {
+    background: $primary-color !important;
+}
