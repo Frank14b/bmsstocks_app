@@ -10,6 +10,7 @@ import axios from 'axios';
 import ReactLoading from 'react-loading';
 import { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import Utils from '../../utils/Utils';
 
 function RegisterComponent() {
 

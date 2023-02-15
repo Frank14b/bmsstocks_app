@@ -26,6 +26,8 @@ function HeaderComponent() {
 
     const logOutUser = (e) => {
         Utils.clearLocalStorage()
+        mycontext.setCurrentBusiness(null)
+        mycontext.setChooseDashboardMenu(null)
         router.push("/login")
     }
 
